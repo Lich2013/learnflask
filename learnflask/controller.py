@@ -2,4 +2,7 @@ from learnflask import app
 
 @app.route('/')
 def index():
-    return 'hello, world', 403
+    list = []
+    for x in app.config:
+        list.append((x, app.config[x]))
+    return 'hello, world'+str(list)
