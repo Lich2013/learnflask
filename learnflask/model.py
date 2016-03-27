@@ -1,3 +1,5 @@
 from learnflask import app
 
-# def
+def mysql():
+    def __init__():
+        pass
