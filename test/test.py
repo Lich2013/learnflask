@@ -15,8 +15,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_post(self):
         rv = self.app.post('/post/', data={'name':'value'}, follow_redirects=True)
-        print rv.data
         assert 'value' in rv.data
+
+
 
 if __name__ == '__main__':
     unittest.main()

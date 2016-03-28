@@ -12,3 +12,7 @@ def index():
 def post():
     return str(request.form)
     # return 'this is post method'
+
+@app.route('/sblcl/', methods=['get'])
+def test():
+    return 'asdf'
