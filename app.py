@@ -1,6 +1,3 @@
-from learnflask import app
+from learnflask import app, socketio
 
-
-# app.config.from_pyfile('../config.py')
-# app.config.from_pyfile()
-app.run()
+server = socketio.run(app)
