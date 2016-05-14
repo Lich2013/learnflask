@@ -9,28 +9,19 @@ from learnflask.model import Monitor, Status
 monkey.patch_all()
 
 from learnflask import app, socketio
-from flask import Blueprint
+from flask import Blueprint, render_template
 from flask_socketio import emit
 from RedisQueue import RedisQueue
 
 r = RedisQueue('queue')
 bp = Blueprint('Watch', __name__)
 
+
 @bp.route('/')
 def index():
     # result = os.popen()
-    return """
-            hello world
-            <script src="/static/socket.js"></script>
-<script type="text/javascript" charset="utf-8">
-    var chat = io.connect('http://' + document.domain + ':' + location.port);
-    chat.on('connect', function(msg){console.log(msg);})
-    chat.on('status', function(msg){
-            console.log(msg);
-        });
+    return render_template('index.html')
 
-</script>
-        """
 
 @socketio.on('connect')
 def connect():
@@ -43,9 +34,6 @@ def getstatus(get):
     print get
     info = {'data': 'test1'}
     emit('status', json.dumps(info))
-
-
-
 
 
 Monitor(r).start()

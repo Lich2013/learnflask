@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>STATUS</title>
+</head>
+<body>
+
+            <h1>hello world</h1>
+
+<script src="/static/socket.js"></script>
+<script src="/static/echarts.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    var chat = io.connect('http://' + document.domain + ':' + location.port);
+    chat.on('connect', function(msg){console.log(msg);});
+    chat.on('version', function(msg){
+            console.log(msg);
+    });
+    chat.on('mem', function(msg){
+            console.log(msg);
+    });
+    chat.on('cpu', function(msg){
+            console.log(msg);
+    });
+    chat.on('uptime', function(msg){
+            console.log(msg);
+    });
+    chat.on('io', function(msg){
+            console.log(msg);
+    });
+
+</script>
+
+</body>
+</html>

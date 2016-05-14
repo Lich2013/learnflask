@@ -1,7 +1,9 @@
 # coding:utf-8
 import redis
 
+
 class RedisQueue(object):
+
     def __init__(self, name, namespace='queue', **kwargs):
         host = kwargs.get('host', 'localhost')
         port = int(kwargs.get('port', 6379))
@@ -18,5 +20,6 @@ class RedisQueue(object):
             result = self.__queue.lpop(self.key)
         result = result[1]
         return result
+
     def __del__(self):
         self.__queue.flushdb()
